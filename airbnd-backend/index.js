@@ -35,10 +35,11 @@ function getUserDataFromReq(req) {
     });
   });
 }
-
+const url =
+  "mongodb+srv://booking:booking@cluster0.cevrte4.mongodb.net/?retryWrites=true&w=majority";
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGOURL);
+    await mongoose.connect(url);
     console.log("connected to database");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
@@ -250,3 +251,5 @@ app.listen(4000, () => {
   console.log("server is running at 4000");
   connectDB();
 });
+
+module.exports = app;
